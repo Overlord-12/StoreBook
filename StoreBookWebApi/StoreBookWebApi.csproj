@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BuisnessObjects\BuisnessObjects.csproj" />
+    <ProjectReference Include="..\ProcessManager\ProcessManager.csproj" />
   </ItemGroup>
 
 </Project>
