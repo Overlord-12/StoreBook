@@ -31,7 +31,6 @@ namespace BuisnessObjects
         {
             modelBuilder.Entity<Employee>(entity =>
             {
-                entity.HasNoKey();
 
                 entity.ToTable("employee");
 
