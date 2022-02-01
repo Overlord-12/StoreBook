@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreBookWebApi", "StoreBookWebApi\StoreBookWebApi.csproj", "{F2D1BBBD-96C0-4386-A95C-C6DEE66E818C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuisnessObjects", "BuisnessObjects\BuisnessObjects.csproj", "{E9B8135B-4548-4412-9358-196889206012}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2D1BBBD-96C0-4386-A95C-C6DEE66E818C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D1BBBD-96C0-4386-A95C-C6DEE66E818C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D1BBBD-96C0-4386-A95C-C6DEE66E818C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D1BBBD-96C0-4386-A95C-C6DEE66E818C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9B8135B-4548-4412-9358-196889206012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9B8135B-4548-4412-9358-196889206012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9B8135B-4548-4412-9358-196889206012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9B8135B-4548-4412-9358-196889206012}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09E3F717-879E-4C0B-9B83-719AEE86A943}
+	EndGlobalSection
+EndGlobal
