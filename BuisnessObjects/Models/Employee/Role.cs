@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BuisnessObjects.Models;
+using System;
 using System.Collections.Generic;
 
 namespace BuisnessObjects
 {
-    public partial class Role
+    public partial class Role: SqlEntityBase
     {
-        public int Id { get; set; }
         public string? Rolename { get; set; }
     }
 }
