@@ -39,6 +39,10 @@ namespace BuisnessObjects
                     .HasColumnName("id")
                     .UseIdentityAlwaysColumn();
 
+                entity.Property(e => e.Password)
+                      .HasColumnType("character varying")
+                      .HasColumnName("password");
+
                 entity.Property(e => e.Name)
                     .HasColumnType("character varying")
                     .HasColumnName("name");

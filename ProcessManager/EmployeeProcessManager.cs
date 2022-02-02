@@ -11,8 +11,8 @@ namespace ProcessManager
 {
     public class EmployeeProcessManager : IEmployeeProcessManager
     {
-        private readonly IRepository _repository;
-        public EmployeeProcessManager(IRepository repository)
+        private readonly IEmployeeDataManagers _repository;
+        public EmployeeProcessManager(IEmployeeDataManagers repository)
         {
             _repository = repository;
         }
@@ -23,7 +23,7 @@ namespace ProcessManager
 
         public Task<Employee> GetEmployeeById(int id)
         {
-            return  _repository.GetById<Employee>(id);
+            return  _repository.GetById(id);
         }
 
         public Task<Employee> Save(Employee employee)

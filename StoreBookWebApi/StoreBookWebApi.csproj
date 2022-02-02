@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -25,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BuisnessObjects\BuisnessObjects.csproj" />
     <ProjectReference Include="..\ProcessManager\ProcessManager.csproj" />
+    <ProjectReference Include="..\ServiceFactory\ServiceFactory.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,10 +5,8 @@ namespace StoreBookWebApi.Models.Employee
 {
     public class EmployeeDto
     {
-        [Key]
-        public int Id { get; set; }
+        public string Password { get; set; } = null!;
         public string? Name { get; set; }
         public int RoleId { get; set; }
-        public RoleDto? Role { get; set; }
     }
 }
