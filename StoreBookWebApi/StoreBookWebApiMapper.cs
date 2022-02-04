@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BuisnessObjects;
 using StoreBookWebApi.Models.Employee;
+using StoreBookWebApi.Models.Register;
 
 namespace StoreBookWebApi
 {
@@ -8,8 +9,9 @@ namespace StoreBookWebApi
     {
         public StoreBookWebApiMapper()
         {
-            CreateMap<Employee, EmployeeDto>();
-            CreateMap<EmployeeDto, Employee>();
+            CreateMap<User, UserDto>();
+            CreateMap<UserDto, User>();
+            CreateMap<RegisterDto, User>();   
         }
     }
 }

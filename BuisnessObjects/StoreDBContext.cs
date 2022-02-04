@@ -16,7 +16,7 @@ namespace BuisnessObjects
         {
         }
 
-        public virtual DbSet<Employee> Employees { get; set; } = null!;
+        public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,10 +29,10 @@ namespace BuisnessObjects
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Employee>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
 
-                entity.ToTable("employee");
+                entity.ToTable("user");
 
                 entity.Property(e => e.Id)
                     .ValueGeneratedOnAdd()
