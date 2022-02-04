@@ -14,9 +14,10 @@ namespace ServiceFactory
 {
     public static class ServiceCollectionExtensionProcessManagers
     {
-        public static IServiceCollection AddDataManagers(this IServiceCollection services)
+        public static IServiceCollection AddProcessManagers(this IServiceCollection services)
         {
-            services.AddScoped<IEmployeeProcessManager, EmployeeProcessManager>();
+            services.AddScoped<IUserProcessManager, UserProcessManager>();
+            services.AddScoped<IAuthenticationProcessManager, AuthenticationProcessManager>();
             return services;
         }
     }

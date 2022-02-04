@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BuisnessObjects
 {
-    public partial class Employee: SqlEntityBase
+    public partial class User: SqlEntityBase
     {
         public string? Name { get; set; }
         public int Roleid { get; set; }

@@ -11,9 +11,9 @@ namespace ServiceFactory
 {
     public static class ServiceCollectionExtensionDataMager
     {
-        public static IServiceCollection AddProcessManagers(this IServiceCollection services)
+        public static IServiceCollection AddDataManagers(this IServiceCollection services)
         {
-            services.AddScoped<IEmployeeDataManagers, EmployeeDataManagers>();
+            services.AddScoped<IUserDataManagers, UserDataManagers>();
             return services;
         }
     }
