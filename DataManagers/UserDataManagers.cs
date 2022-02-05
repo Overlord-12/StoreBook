@@ -42,7 +42,7 @@ namespace DataManagers
 
         public async Task<User> GetById(int id)
         {
-            return await _storeDBContext.Users.FindAsync(id);
+            return await _storeDBContext.Users.Include(dto=>dto.Role).FirstOrDefaultAsync(user=>user.Id == id);
         }
 
         public async Task<List<User>> GetAll()
@@ -52,7 +52,7 @@ namespace DataManagers
 
         public async Task<User> GetByEmail(string email)
         {
-            return await _storeDBContext.Users.FirstOrDefaultAsync(_email=>_email.Name == email);
+            return await _storeDBContext.Users.Include(dto => dto.Role).FirstOrDefaultAsync(user => user.Name == email);
         }
     }
 }

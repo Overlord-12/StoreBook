@@ -38,6 +38,7 @@ namespace ProcessManager
 
         public Task<User> Save(User user)
         {
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             return _repository.Save(user);
         }
 

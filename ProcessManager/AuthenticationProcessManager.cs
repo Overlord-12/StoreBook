@@ -11,7 +11,7 @@ namespace ProcessManager
 {
     public class AuthenticationProcessManager: IAuthenticationProcessManager
     {
-        private string securyKey = "this is secure key";
+        private string securyKey = "this is my custom Secret key for authnetication";
         public string Generate(string email)
         {
             SymmetricSecurityKey symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securyKey));

@@ -2,8 +2,13 @@
 using BuisnessObjects;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.IdentityModel.Tokens;
 using ProcessManager.Interface;
 using StoreBookWebApi.Models.Register;
+using StoreBookWebApi.Token;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace StoreBookWebApi.Controllers
 {
@@ -15,16 +20,22 @@ namespace StoreBookWebApi.Controllers
         private IAuthenticationProcessManager _authenticationProcessManager;
         private IMapper _mapper;
 
-        public AuthenticationController(IUserProcessManager employeeProcessManager, IMapper mapper, IAuthenticationProcessManager authenticationProcessManager)
+        public AuthenticationController(IUserProcessManager employeeProcessManager, IMapper mapper, 
+            IAuthenticationProcessManager authenticationProcessManager)
         {
             _authenticationProcessManager = authenticationProcessManager;
             _mapper = mapper;
             _employeeProcessManager = employeeProcessManager;
         }
         [HttpPost("register")]
-        public ActionResult Register(RegisterDto registerDto)
+        public async Task<ActionResult> Register(RegisterDto registerDto)
         {
-            _employeeProcessManager.Register(_mapper.Map<User>(registerDto));
+            
+            var user = await _employeeProcessManager.GetByEmail(registerDto.Name);
+            if (user != null)
+                return Ok(registerDto);
+            await _employeeProcessManager.Register(_mapper.Map<User>(registerDto));
+
            return Ok(registerDto);
         }
         [HttpPost("login")]
@@ -32,20 +43,55 @@ namespace StoreBookWebApi.Controllers
         {
             try
             {
-                User? user = await _employeeProcessManager.GetByEmail(dto.Name);
-                if (user == null)
-                    return BadRequest("Неверный логин");
-                if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
-                    return BadRequest("Неверный пароль");
+                var identity = await GetIdentity(dto);
+                if (identity == null)
+                    return BadRequest("Credetnials wrong");
 
-                var jwt = _authenticationProcessManager.Generate(user.Name);
-                return Ok(jwt);
+                var now = DateTime.UtcNow;
+                // создаем JWT-токен
+                var jwt = new JwtSecurityToken(
+                        issuer: AuthOptions.ISSUER,
+                        audience: AuthOptions.AUDIENCE,
+                        notBefore: now,
+                        claims: identity.Claims,
+                        expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
+                        signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+                var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
+
+                var response = new
+                {
+                    access_token = encodedJwt,
+                    username = dto.Name
+                };
+
+                return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest("Неверный пароль");
+                return BadRequest(ex.Message);
             }
+        }
+        private async Task<ClaimsIdentity> GetIdentity(RegisterDto dto)
+        {
+            User? user = await _employeeProcessManager.GetByEmail(dto.Name);
+            if (user == null)
+                return null;
+            if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
+                return null;
+
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
+                    new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Rolename)
+                };
+
+                ClaimsIdentity claimsIdentity =
+                new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
+                    ClaimsIdentity.DefaultRoleClaimType);
+                return claimsIdentity;
+
         }
     }
 }
+
