@@ -10,6 +10,7 @@ using BuisnessObjects;
 using ProcessManager.Interface;
 using StoreBookWebApi.Models.Employee;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StoreBookWebApi.Controllers
 {
@@ -34,6 +35,7 @@ namespace StoreBookWebApi.Controllers
             return await _userProcessManager.GetAll();
         }
 
+        [Authorize]
         // GET: api/Employees/5
         [HttpGet("getUserById")]
         public async Task<ActionResult<User>> GetUser(int id)
