@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataManagers", "DataManager
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessManager", "ProcessManager\ProcessManager.csproj", "{0880DD9A-4D73-47A4-A41A-C177D2614266}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFactory", "ServiceFactory\ServiceFactory.csproj", "{24E34E1B-0DFD-4397-AA91-4179F34F8F1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceFactory", "ServiceFactory\ServiceFactory.csproj", "{24E34E1B-0DFD-4397-AA91-4179F34F8F1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{D9E61064-A633-48F7-BDBC-D761F6204060}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2D1BBBD-96C0-4386-A95C-C6DEE66E818C} = {D9E61064-A633-48F7-BDBC-D761F6204060}
+		{E9B8135B-4548-4412-9358-196889206012} = {D9E61064-A633-48F7-BDBC-D761F6204060}
+		{1786542C-56A5-4735-A2E8-206CE951F66F} = {D9E61064-A633-48F7-BDBC-D761F6204060}
+		{0880DD9A-4D73-47A4-A41A-C177D2614266} = {D9E61064-A633-48F7-BDBC-D761F6204060}
+		{24E34E1B-0DFD-4397-AA91-4179F34F8F1F} = {D9E61064-A633-48F7-BDBC-D761F6204060}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09E3F717-879E-4C0B-9B83-719AEE86A943}
