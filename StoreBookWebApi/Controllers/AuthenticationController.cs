@@ -17,23 +17,20 @@ namespace StoreBookWebApi.Controllers
     public class AuthenticationController : ControllerBase
     {
         private IUserProcessManager _employeeProcessManager;
-        private IAuthenticationProcessManager _authenticationProcessManager;
         private IMapper _mapper;
 
-        public AuthenticationController(IUserProcessManager employeeProcessManager, IMapper mapper, 
-            IAuthenticationProcessManager authenticationProcessManager)
+        public AuthenticationController(IUserProcessManager employeeProcessManager, IMapper mapper)
         {
-            _authenticationProcessManager = authenticationProcessManager;
             _mapper = mapper;
             _employeeProcessManager = employeeProcessManager;
         }
         [HttpPost("register")]
-        public async Task<ActionResult> Register(RegisterDto registerDto)
+        public async Task<ActionResult> Register([FromBody]RegisterDto registerDto)
         {
             
             var user = await _employeeProcessManager.GetByEmail(registerDto.Name);
             if (user != null)
-                return Ok(registerDto);
+                return BadRequest("The user already exists");
             await _employeeProcessManager.Register(_mapper.Map<User>(registerDto));
 
            return Ok(registerDto);
