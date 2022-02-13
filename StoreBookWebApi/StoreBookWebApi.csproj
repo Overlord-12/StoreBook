@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuisnessObjects\BuisnessObjects.csproj" />
+    <ProjectReference Include="..\BuisnessObjects\BusinessObjects.csproj" />
     <ProjectReference Include="..\ProcessManager\ProcessManager.csproj" />
     <ProjectReference Include="..\ServiceFactory\ServiceFactory.csproj" />
   </ItemGroup>

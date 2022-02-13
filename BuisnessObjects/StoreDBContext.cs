@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace BuisnessObjects
+namespace BusinessObjects
 {
     public partial class StoreDBContext : DbContext
     {
@@ -15,7 +12,7 @@ namespace BuisnessObjects
             : base(options)
         {
         }
-
+        public virtual DbSet<Book> Books { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
 
@@ -23,7 +20,7 @@ namespace BuisnessObjects
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=StoreDB;Username=postgres;Password=123");
+                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=StoreDB;Username=postgres;Password=123");//TODO hide connection string somewhere
             }
         }
 
