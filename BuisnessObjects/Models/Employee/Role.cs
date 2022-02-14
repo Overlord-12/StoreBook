@@ -1,8 +1,8 @@
-﻿using BuisnessObjects.Models;
+﻿using BusinessObjects.Models;
 using System;
 using System.Collections.Generic;
 
-namespace BuisnessObjects
+namespace BusinessObjects
 {
     public partial class Role: SqlEntityBase
     {

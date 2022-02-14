@@ -1,12 +1,6 @@
-﻿using BCrypt.Net;
-using BuisnessObjects;
+﻿using BusinessObjects;
 using DataManagers.Interface;
 using ProcessManager.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProcessManager
 {
@@ -17,36 +11,36 @@ namespace ProcessManager
         {
             _repository = repository;
         }
-        public Task<bool> Delete(User user)
+        public async Task<bool> Delete(User user)
         {
-            return _repository.Delete(user);
+            return await _repository.Delete(user);
         }
-        public Task<User> GetByEmail(string email)
+        public async Task<User> GetByEmail(string email)
         {
-            return _repository.GetByEmail(email);
-        }
-
-        public Task<User> GetById(int id)
-        {
-            return  _repository.GetById(id);
+            return await _repository.GetByEmail(email);
         }
 
-        public Task<List<User>> GetAll()
+        public async Task<User> GetById(int id)
         {
-            return  _repository.GetAll();
+            return await _repository.GetById(id);
         }
 
-        public Task<User> Save(User user)
+        public async Task<List<User>> GetAll()
+        {
+            return await _repository.GetAll();
+        }
+
+        public async Task<User> Save(User user)
         {
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            return _repository.Save(user);
+            return await _repository.Save(user);
         }
 
-        public Task<User> Register(User user)
+        public async Task<User> Register(User user)
         {
             user.Roleid = 1;
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            return _repository.Save(user);
+            return await _repository.Save(user);
         }
     }
 }

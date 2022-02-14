@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using BuisnessObjects;
-using Microsoft.AspNetCore.Http;
+using BusinessObjects;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.IdentityModel.Tokens;
 using ProcessManager.Interface;
 using StoreBookWebApi.Models.Register;
@@ -25,15 +23,15 @@ namespace StoreBookWebApi.Controllers
             _employeeProcessManager = employeeProcessManager;
         }
         [HttpPost("register")]
-        public async Task<ActionResult> Register([FromBody]RegisterDto registerDto)
+        public async Task<ActionResult> Register([FromBody] RegisterDto registerDto)
         {
-            
+
             var user = await _employeeProcessManager.GetByEmail(registerDto.Name);
             if (user != null)
                 return BadRequest("The user already exists");
             await _employeeProcessManager.Register(_mapper.Map<User>(registerDto));
 
-           return Ok(registerDto);
+            return Ok(registerDto);
         }
         [HttpPost("login")]
         public async Task<ActionResult> Login(RegisterDto dto)
@@ -77,16 +75,16 @@ namespace StoreBookWebApi.Controllers
             if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
                 return null;
 
-                var claims = new List<Claim>
+            var claims = new List<Claim>
                 {
                     new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
                     new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Rolename)
                 };
 
-                ClaimsIdentity claimsIdentity =
-                new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
-                    ClaimsIdentity.DefaultRoleClaimType);
-                return claimsIdentity;
+            ClaimsIdentity claimsIdentity =
+            new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
+                ClaimsIdentity.DefaultRoleClaimType);
+            return claimsIdentity;
 
         }
     }

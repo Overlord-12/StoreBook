@@ -1,4 +1,4 @@
-using BuisnessObjects;
+using BusinessObjects;
 using DataManagers;
 using DataManagers.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

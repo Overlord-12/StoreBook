@@ -1,16 +1,10 @@
-﻿using BuisnessObjects;
-using BuisnessObjects.Models;
+﻿using BusinessObjects;
 using DataManagers.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataManagers
 {
-    public class UserDataManagers:IUserDataManagers
+    public class UserDataManagers : IUserDataManagers
     {
         private readonly StoreDBContext _storeDBContext;
 
@@ -29,20 +23,20 @@ namespace DataManagers
             catch (Exception)
             {
 
-                return null;
+                throw;
             }
         }
 
         public async Task<bool> Delete(User user)
         {
-           _storeDBContext.Remove(user);
+            _storeDBContext.Remove(user);
             await _storeDBContext.SaveChangesAsync();
             return true;
         }
 
         public async Task<User> GetById(int id)
         {
-            return await _storeDBContext.Users.Include(dto=>dto.Role).FirstOrDefaultAsync(user=>user.Id == id);
+            return await _storeDBContext.Users.Include(dto => dto.Role).FirstOrDefaultAsync(user => user.Id == id);
         }
 
         public async Task<List<User>> GetAll()
