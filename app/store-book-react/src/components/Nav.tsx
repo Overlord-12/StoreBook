@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/Nav.css';
+import {Route, Routes} from "react-router-dom";
+import Login from "../pages/Login";
 
 function Nav() {
     return (
