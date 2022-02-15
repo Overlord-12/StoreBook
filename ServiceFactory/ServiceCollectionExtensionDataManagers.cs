@@ -1,11 +1,6 @@
 ﻿using DataManagers;
 using DataManagers.Interface;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceFactory
 {
@@ -14,6 +9,7 @@ namespace ServiceFactory
         public static IServiceCollection AddDataManagers(this IServiceCollection services)
         {
             services.AddScoped<IUserDataManagers, UserDataManagers>();
+            services.AddScoped<IBookDataManager, BookDataManager>();
             return services;
         }
     }

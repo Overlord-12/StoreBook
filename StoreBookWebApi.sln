@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreBookWebApi", "StoreBookWebApi\StoreBookWebApi.csproj", "{F2D1BBBD-96C0-4386-A95C-C6DEE66E818C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuisnessObjects", "BuisnessObjects\BuisnessObjects.csproj", "{E9B8135B-4548-4412-9358-196889206012}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessObjects", "BuisnessObjects\BusinessObjects.csproj", "{E9B8135B-4548-4412-9358-196889206012}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataManagers", "DataManagers\DataManagers.csproj", "{1786542C-56A5-4735-A2E8-206CE951F66F}"
 EndProject

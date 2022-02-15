@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BuisnessObjects;
+using BusinessObjects;
 using StoreBookWebApi.Models.Employee;
 using StoreBookWebApi.Models.Register;
 

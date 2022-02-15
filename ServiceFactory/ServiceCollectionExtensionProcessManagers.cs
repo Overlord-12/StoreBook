@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataManagers;
-using DataManagers.Interface;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using ProcessManager;
 using ProcessManager.Interface;
 
@@ -18,6 +10,7 @@ namespace ServiceFactory
         {
             services.AddScoped<IUserProcessManager, UserProcessManager>();
             services.AddScoped<IAuthenticationProcessManager, AuthenticationProcessManager>();
+            services.AddScoped<IBookProcessManager, BookProcessManager>();
             return services;
         }
     }
