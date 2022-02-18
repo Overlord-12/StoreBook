@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace StoreBookWebApi.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class UserController : ControllerBase
     {
