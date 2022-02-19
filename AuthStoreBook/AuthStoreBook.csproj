@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuthCommon\AuthCommon.csproj" />
+    <ProjectReference Include="..\BuisnessObjects\BusinessObjects.csproj" />
+    <ProjectReference Include="..\DataManagers\DataManagers.csproj" />
+    <ProjectReference Include="..\ProcessManager\ProcessManager.csproj" />
+    <ProjectReference Include="..\ServiceFactory\ServiceFactory.csproj" />
+  </ItemGroup>
+
+</Project>

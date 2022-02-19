@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessObjects;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProcessManager.Interface;
 
@@ -16,6 +17,7 @@ namespace StoreBookWebApi.Controllers
             _bookProcessManager = bookProcessManager;
         }
 
+        [Authorize]
         [HttpGet("getBooks")]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {

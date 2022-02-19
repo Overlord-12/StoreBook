@@ -6,7 +6,7 @@ namespace BusinessObjects
 {
     public partial class User: SqlEntityBase
     {
-        public string? Name { get; set; }
+        public string Email { get; set; } = null!;
         public int Roleid { get; set; }
         public string Password { get; set; } = null!;
 
