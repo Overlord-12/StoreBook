@@ -42,5 +42,16 @@ namespace ProcessManager
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             return await _repository.Save(user);
         }
+
+        public async Task<User> GetUserByCred(string email, string password)
+        {
+            var user = await _repository.GetByEmail(email);
+            bool isPasswordSingular = BCrypt.Net.BCrypt.Verify(password, user.Password);
+
+            if (user == null || !isPasswordSingular)
+                return null;
+
+            return user;
+        }
     }
 }

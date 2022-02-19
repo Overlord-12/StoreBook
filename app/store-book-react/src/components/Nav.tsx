@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Nav.css';
+import Login from "../pages/Login";
 
 function Nav() {
     return (
@@ -14,10 +15,10 @@ function Nav() {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav me-auto mb-2 mb-md-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Login</a>
+                            <a className="nav-link active" aria-current="page" href="/Login">Login</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Register</a>
+                            <a className="nav-link active" aria-current="page" href="/Register">Register</a>
                         </li>
                     </ul>
                 </div>

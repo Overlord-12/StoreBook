@@ -15,5 +15,6 @@ namespace ProcessManager.Interface
         Task<bool> Delete(User user);
         Task<User> GetById(int id);
         Task<List<User>> GetAll();
+        Task<User> GetUserByCred(string email, string password);
     }
 }

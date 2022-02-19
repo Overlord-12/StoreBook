@@ -8,8 +8,8 @@ namespace ServiceFactory
     {
         public static IServiceCollection AddDataManagers(this IServiceCollection services)
         {
-            services.AddScoped<IUserDataManagers, UserDataManagers>();
-            services.AddScoped<IBookDataManager, BookDataManager>();
+            services.AddTransient<IUserDataManagers, UserDataManagers>();
+            services.AddTransient<IBookDataManager, BookDataManager>();
             return services;
         }
     }

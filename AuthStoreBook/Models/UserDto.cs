@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StoreBookWebApi.Models.Employee
+namespace AuthStoreBook.Models
 {
     public class UserDto
     {
+        [Required]
         public string Password { get; set; } = null!;
-        public string Email { get; set; } = null!;
+        [Required]
+        public string? Email { get; set; }
         public int RoleId { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace ServiceFactory
     {
         public static IServiceCollection AddProcessManagers(this IServiceCollection services)
         {
-            services.AddScoped<IUserProcessManager, UserProcessManager>();
-            services.AddScoped<IAuthenticationProcessManager, AuthenticationProcessManager>();
-            services.AddScoped<IBookProcessManager, BookProcessManager>();
+            services.AddTransient<IUserProcessManager, UserProcessManager>();
+            services.AddTransient<IAuthenticationProcessManager, AuthenticationProcessManager>();
+            services.AddTransient<IBookProcessManager, BookProcessManager>();
             return services;
         }
     }
