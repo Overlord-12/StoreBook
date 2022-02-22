@@ -46,7 +46,7 @@ namespace ProcessManager
         public async Task<User> GetUserByCred(string email, string password)
         {
             var user = await _repository.GetByEmail(email);
-            bool isPasswordSingular = BCrypt.Net.BCrypt.Verify(password, user.Password);
+            bool isPasswordSingular = BCrypt.Net.BCrypt.Verify(password, user?.Password);
 
             if (user == null || !isPasswordSingular)
                 return null;

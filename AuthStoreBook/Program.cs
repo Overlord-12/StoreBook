@@ -30,15 +30,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
 
-app.UseCors();
+app.UseRouting();
+app.UseAuthorization();
+app.UseAuthentication();
+
+app.UseCors("AllowAll");
 
 app.MapControllers();
 
-app.Run();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
-}
-);
+});
+
+app.Run();

@@ -1,16 +1,14 @@
-
-import Account from "../BusinessObjects/User";
 import * as API from "../Helpers/apiCalls";
 
-export const register = async (user:Account)=>{
-   await fetch(API.register,{
-        method: 'POST',
+
+export const booksLibrary = async ()=> {
+    await fetch(API.getBooks,{
+        method: 'GET',
+        credentials: 'include',
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(
-            user)
     }).then((response: any) => {
         if (response.status === 200) {
             return response.json();
@@ -20,6 +18,4 @@ export const register = async (user:Account)=>{
         }
         return response.status;
     });
-
-
 }

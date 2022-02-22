@@ -1,5 +1,5 @@
 export default interface Account {
-    Name: string;
+    Email: string;
     Password: string;
 
 }

@@ -11,10 +11,11 @@ function Register() {
     const [repeatPassword,setRepeatPassword ] = useState('');
     const [redirect,setRedirect] = useState(false);
 
-    const submit = async ()=>{
+    const submit = async (e:any)=>{
+        e.preventDefault();
         if(repeatPassword !== password)
             return <h1>Пароли не совпадают</h1>;
-        let user:Account = {Name:name,Password:password}
+        let user:Account = {Email:name,Password:password}
         await register(user);
         setRedirect(true);
     }

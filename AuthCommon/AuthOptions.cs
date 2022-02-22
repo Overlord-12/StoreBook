@@ -10,8 +10,8 @@ namespace AuthCommon
         public string Secret { get; set; }
         public int TokenLifeTime { get; set; }
         public SymmetricSecurityKey GetSymmetricSecurityKey()
-        {
-            return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Secret));
+            {
+                return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Secret));
         }
     }
 }
