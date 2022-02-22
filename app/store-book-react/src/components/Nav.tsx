@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/Nav.css';
-import Login from "../pages/Login";
 
 function Nav() {
     return (

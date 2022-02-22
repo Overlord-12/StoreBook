@@ -1,6 +1,6 @@
 let defaultHeaders = {};
 
-const fecthWrapper:any=function (url:string,params:any={}){
+const fetchWrapper:any=function (url:string,params:any={}){
  params.headers = Object.assign(
      {},
      defaultHeaders,
@@ -12,12 +12,22 @@ const fecthWrapper:any=function (url:string,params:any={}){
      !(params.body instanceof FormData)
  ){
   const body = new FormData();
-  Object.entries(params.body).forEach(([k, v]) => body.append(k, v));
 
   params.body = body;
  }
  return fetch(url,params)
 }
 
+const headerDict = function(headers: any) {
+ let dict: any = {};
 
-export  default  fecthWrapper
+
+ return dict;
+};
+
+fetchWrapper.setDefaultHeaders = function(headers: any) {
+ defaultHeaders = headerDict(headers);
+};
+
+
+export  default  fetchWrapper

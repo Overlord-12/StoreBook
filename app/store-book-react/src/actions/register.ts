@@ -1,8 +1,9 @@
+
 import Account from "../BusinessObjects/User";
 import * as API from "../Helpers/apiCalls";
 
 export const register = async (user:Account)=>{
-    const response = await fetch(API.register,{
+   await fetch(API.register,{
         method: 'POST',
         headers: {
             Accept: "application/json",

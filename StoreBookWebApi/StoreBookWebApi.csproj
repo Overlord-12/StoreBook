@@ -35,4 +35,8 @@
     <ProjectReference Include="..\ServiceFactory\ServiceFactory.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Common\" />
+  </ItemGroup>
+
 </Project>
