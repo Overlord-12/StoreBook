@@ -3,8 +3,8 @@ let defaultHeaders = {};
 const fetchWrapper:any=function (url:string,params:any={}){
  params.headers = Object.assign(
      {},
+     params.headers,
      defaultHeaders,
-     params.headers
  );
  if (
      params.body &&
@@ -18,15 +18,10 @@ const fetchWrapper:any=function (url:string,params:any={}){
  return fetch(url,params)
 }
 
-const headerDict = function(headers: any) {
- let dict: any = {};
 
 
- return dict;
-};
-
-fetchWrapper.setDefaultHeaders = function(headers: any) {
- defaultHeaders = headerDict(headers);
+fetchWrapper.setDefaultHeaders = function(headers: Headers) {
+ defaultHeaders = headers;
 };
 
 

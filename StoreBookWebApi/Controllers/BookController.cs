@@ -6,6 +6,8 @@ using ProcessManager.Interface;
 
 namespace StoreBookWebApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class BookController : Controller
     {
         private readonly IBookProcessManager _bookProcessManager;

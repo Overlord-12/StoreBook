@@ -1,10 +1,10 @@
 import * as API from "../Helpers/apiCalls";
+import fetchWrapper from "../Helpers/fetchWrapper";
 
 
 export const booksLibrary = async ()=> {
-    await fetch(API.getBooks,{
+    await fetchWrapper(API.getBooks,{
         method: 'GET',
-        credentials: 'include',
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json"

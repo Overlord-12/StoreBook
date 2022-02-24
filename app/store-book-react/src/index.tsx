@@ -6,21 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import Nav from "./components/Nav";
 import Register from "./pages/Register";
 import {Route, BrowserRouter,Routes} from "react-router-dom";
+import BookLibrary from "./pages/BookLibrary";
 
 ReactDOM.render(
-  <React.StrictMode>
       <BrowserRouter>
           <div>
               <Nav/>
           </div>
           <div>
               <Routes>
+                  <Route path ="/index" element={<BookLibrary/>}/>
                   <Route path="/Login" element={<Login/>}/>
                   <Route path="/Register" element={<Register/>}/>
               </Routes>
           </div>
-      </BrowserRouter>
-  </React.StrictMode>,
+      </BrowserRouter>,
   document.getElementById('root')
 );
 

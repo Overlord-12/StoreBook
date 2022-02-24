@@ -4,25 +4,17 @@ namespace BusinessObjects
 {
     public partial class StoreDBContext : DbContext
     {
-        public StoreDBContext()
-        {
-        }
+
+
+        public virtual DbSet<Book> Books { get; private set; } = null!;
+        public virtual DbSet<User> Users { get; private set; } = null!;
+        public virtual DbSet<Role> Roles { get; private set; } = null!;
 
         public StoreDBContext(DbContextOptions<StoreDBContext> options)
             : base(options)
         {
         }
-        public virtual DbSet<Book> Books { get; private set; } = null!;
-        public virtual DbSet<User> Users { get; private set; } = null!;
-        public virtual DbSet<Role> Roles { get; private set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=StoreDB;Username=postgres;Password=123");//TODO hide connection string somewhere
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

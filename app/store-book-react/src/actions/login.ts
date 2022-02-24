@@ -1,9 +1,10 @@
 import Account from "../BusinessObjects/User";
 import * as API from "../Helpers/apiCalls";
+import * as statuses from "../Helpers/StatusConstants"
 import fetchWrapper from "../Helpers/fetchWrapper";
 
 export const login = async (user:Account)=>{
-        await fetch(API.login,{
+        fetchWrapper(API.login, {
             method: 'POST',
             headers: {
                 Accept: "application/json",
@@ -11,23 +12,29 @@ export const login = async (user:Account)=>{
             },
             body: JSON.stringify(
                 user)
-        }).then((response: any) => {
-            if (response.status === 200) {
-                let result = response.json();
-            }
-            if (response.status === 400) {
-                return 400;
-            }
-            return response.status;
-    });
+        })
+            .then((response: any) => {
+                if (response.status === 200) {
+                    return response.json();
+                }
+                if (response.status === 400) {
+                    return statuses.ERROR;
+                }
+                return statuses.ERROR;
+            })
+            .then((data: any) => {
+                switch (data) {
+                    default:
+                        onAuthentication(data);
+                        break;
+                }
+            });
 }
 
-export const onAuthentication = (user: any) => {
-    return (dispatch: any) => {
+export const onAuthentication =  (user: any) => {
         fetchWrapper.setDefaultHeaders({
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${user.token}`
+            Authorization: `Bearer ${user.access_token}`
         });
-    };
 };
