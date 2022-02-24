@@ -10,7 +10,7 @@ function Login() {
     const submit = async (e:any)=>{
         e.preventDefault();
         let user:Account = {Email:name,Password:password}
-        let result = await login(user);
+        await login(user);
     }
 
     return (

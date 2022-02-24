@@ -4,6 +4,7 @@ using DataManagers;
 using DataManagers.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ProcessManager;
 using ProcessManager.Interface;
@@ -14,6 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var authOptions = builder.Configuration.GetSection("Auth").Get<AuthOptions>();
+var connectionString = builder.Configuration.GetConnectionString("PostgreConnetction");
+
 builder.Services.AddControllers();
 builder.Services.AddCors(setup =>
                setup.AddPolicy("AllowAll", builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
@@ -48,7 +51,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddProcessManagers();
 builder.Services.AddDataManagers();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<StoreDBContext>();
+builder.Services.AddDbContext<StoreDBContext>(options=>options.UseNpgsql(connectionString));
 
 var app = builder.Build();
 
@@ -65,7 +68,11 @@ app.UseRouting();
 app.UseCors("AllowAll");
 
 app.UseAuthentication();
+
 app.UseAuthorization();
+
+app.MapControllers();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
