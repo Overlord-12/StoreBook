@@ -35,7 +35,7 @@ namespace BusinessObjects
                 entity.Property(e => e.Email)
                     .HasColumnType("character varying")
                     .HasColumnName("email");
-
+                    
                 entity.Property(e => e.Roleid).HasColumnName("roleid");
 
                 entity.HasOne(d => d.Role)
@@ -56,6 +56,23 @@ namespace BusinessObjects
                 entity.Property(e => e.Rolename)
                     .HasColumnType("character varying")
                     .HasColumnName("rolename");
+            });
+
+            modelBuilder.Entity<Book>(entity =>
+            {
+                entity.ToTable("Book");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.BookName)
+                    .HasColumnName("BookName")
+                    .HasColumnType("character varying");
+
+                entity.Property(e => e.Author)
+                    .HasColumnType("character varying")
+                    .HasColumnName("Author");
             });
 
             OnModelCreatingPartial(modelBuilder);

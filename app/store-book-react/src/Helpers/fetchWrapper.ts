@@ -15,6 +15,7 @@ const fetchWrapper:any=function (url:string,params:any={}){
 
   params.body = body;
  }
+
  return fetch(url,params)
 }
 
