@@ -19,7 +19,6 @@ namespace StoreBookWebApi.Controllers
             _bookProcessManager = bookProcessManager;
         }
 
-        [Authorize]
         [HttpGet("getBooks")]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
